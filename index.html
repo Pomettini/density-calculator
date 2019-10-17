@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Density Calculator</title>
+    <style>
+        * {
+            font-size: 5vw;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 1em;
+            background: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <label>KG registrati</label>
+    <input type="text" id="rkg">
+
+    <label>KG attuali</label>
+    <input type="text" id="akg">
+
+    <label>KG desiderati</label>
+    <input type="text" id="deskg">
+
+    <label>Litri riforniti</label>
+    <input type="text" id="riflt">
+
+    <button id="calculateButton">Calculate</button>
+    <script>
+        document.getElementById("calculateButton").onclick = function () {
+            calculate()
+        };
+
+        function calculate() {
+            let rkg = document.getElementById("rkg");
+            let akg = document.getElementById("akg");
+            let deskg = document.getElementById("deskg");
+            let riflt = document.getElementById("riflt");
+
+            var density = (deskg.value - akg.value) / riflt.value;
+
+            riflt.value = density * (deskg.value - clamp(akg.value, 0, rkg.value - 500));
+
+            var y = riflt.value / (deskg.value - akg.value);
+        }
+
+        function clamp(num, min, max) {
+            return num <= min ? min : num >= max ? max : num;
+        }
+    </script>
+</body>
+
+</html>
