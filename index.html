@@ -4,39 +4,49 @@
 <head>
     <meta charset="utf-8" />
     <title>Density Calculator</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
     <style>
         * {
             font-size: 5vw;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         label {
             display: block;
             font-weight: bold;
+            margin: 0.5em;
         }
 
-        input {
+        input[type="number"] {
             display: block;
-            width: 100%;
+            /* width: 100%; */
             margin-bottom: 1em;
             background: lightblue;
+            margin: 0.5em;
+        }
+
+        button {
+            display: block;
+            padding: 1em;
+            margin: 0.5em;
         }
     </style>
 </head>
 
 <body>
     <label>KG registrati</label>
-    <input type="text" id="rkg">
+    <input type="number" id="rkg">
 
     <label>KG attuali</label>
-    <input type="text" id="akg">
+    <input type="number" id="akg">
 
     <label>KG desiderati</label>
-    <input type="text" id="deskg">
+    <input type="number" id="deskg">
 
     <label>Litri riforniti</label>
-    <input type="text" id="riflt">
+    <input type="number" id="riflt">
 
-    <button id="calculateButton">Calculate</button>
+    <button id="calculateButton">Calcola</button>
     <script>
         document.getElementById("calculateButton").onclick = function () {
             calculate()
